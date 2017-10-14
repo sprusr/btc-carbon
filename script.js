@@ -1,5 +1,6 @@
 var averageDeviceHashrate = 14000000000000, // H/s of Antminer S9
-    averageDevicePower = 1350 // W of Antminer S9
+    averageDevicePower = 1350, // W of Antminer S9
+    selectedPeriodHours = 365.25 * 24
 
 function updateFigures() {
   var hashrateRequest = new Request('https://blockchain.info/q/hashrate?cors=true')
@@ -19,7 +20,7 @@ function updateFigures() {
         })
         .then(function(response) {
           var intensity = response.data[0].intensity.actual || response.data[0].intensity.forecast, // intensity in gCO2/kWh
-              btcCarbon = intensity * totalPower * 365.25 * 24
+              btcCarbon = intensity / 1000 * totalPower * selectedPeriodHours
 
           document.getElementById('hashrate').textContent = `${formatSI(hashrate * 1000000000)}H/s`
           document.getElementById('power').textContent = `${formatSI(totalPower)}W`
@@ -29,17 +30,42 @@ function updateFigures() {
     })
 }
 
+function handlePeriodChange(e) {
+  var selectedPeriod = e.target.value
+
+  switch (selectedPeriod) {
+    case 'year':
+      selectedPeriodHours = 8766
+      break;
+    case 'month':
+      selectedPeriodHours = 744
+      break;
+    case 'week':
+      selectedPeriodHours = 168
+      break;
+    case 'day':
+      selectedPeriodHours = 24
+      break;
+    case 'hour':
+      selectedPeriodHours = 1
+      break;
+  }
+
+  updateFigures()
+}
+
 // convert number to Kilo, Mega, Giga...
 function formatSI(a,b){if(0==a)return'0';var c=1024,d=b||2,e=['','K','M','G','T','P','E','Z','Y'],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+' '+e[f]}
 
 // return string of something with similar carbon emission
 function getCarbonComparison(carbon) {
   if (carbon <= 1000) {
-    return 'something'
+    return 'something quite small'
   } else if (carbon > 1000) {
-    return 'something bigger'
+    return 'something really big'
   }
 }
 
 updateFigures()
 setInterval(updateFigures, 2000)
+document.getElementById('timeframe').addEventListener('change', handlePeriodChange)
