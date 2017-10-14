@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BTC Carbon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>BTC Carbon</h1>
+  <p>The current average hash rate of the Bitcoin network is <span id="hashrate" class="stats">...</span>.</p>
+  <p>It's currently using about <span id="power" class="stats">...</span> of power (estimated).</p>
+  <p>
+    This equates to roughly <span id="carbon" class="stats">...</span> of CO2 per
+    <select id="timeframe">
+      <option value="year">year</option>
+      <option value="month">month</option>
+      <option value="week">week</option>
+      <option value="day">day</option>
+      <option value="hour">hour</option>
+    </select>, about the same as <span id="comparison" class="stats">...</span>.
+  </p>
+  <p><small>Created by hackers at HackUPC Fall 2017</small></p>
+  <script src="script.js"></script>
+</body>
+</html>

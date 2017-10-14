@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  color: #464646;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}
+
+.stats {
+  font-style: italic;
+  color: #000;
+}
