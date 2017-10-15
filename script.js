@@ -59,9 +59,15 @@ function formatSI(a,b){if(0==a)return'0';var c=1024,d=b||2,e=['','K','M','G','T'
 
 // return string of something with similar carbon emission
 function getCarbonComparison(carbon) {
-  if (carbon <= 1000) {
+  if (carbon < 30000) {
     return 'something quite small'
-  } else if (carbon > 1000) {
+  } else if (carbon < 60000) { // 41100g
+    return 'a 100 mile journey in an average family car'
+  } else if (carbon < 164999999) {
+    return 'something'
+  } else if (carbon < 275000000) {
+    return 'half the takeoff emissions of a Falcon 9 rocket'
+  } else {
     return 'something really big'
   }
 }
