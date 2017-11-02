@@ -24,8 +24,8 @@ function updateFigures() {
 
           document.getElementById('hashrate').textContent = `${formatSI(hashrate * 1000000000)}H/s`
           document.getElementById('power').textContent = `${formatSI(totalPower)}W`
-          document.getElementById('carbon').textContent = `${formatSI(btcCarbon)}g`
-          document.getElementById('comparison').textContent = `${getCarbonComparison(btcCarbon)}`
+          document.getElementById('carbon').textContent = `${numberWithCommas(Math.round(btcCarbon / 1000000))} metric tonnes`
+          //document.getElementById('comparison').textContent = `${getCarbonComparison(btcCarbon)}` // disabled until better facts are found!
         })
     })
 }
@@ -57,16 +57,23 @@ function handlePeriodChange(e) {
 // convert number to Kilo, Mega, Giga...
 function formatSI(a,b){if(0==a)return'0';var c=1024,d=b||2,e=['','K','M','G','T','P','E','Z','Y'],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+' '+e[f]}
 
+// add commas to a long number
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
 // return string of something with similar carbon emission
 function getCarbonComparison(carbon) {
   if (carbon < 30000) {
     return 'something quite small'
-  } else if (carbon < 60000) { // 41100g
+  } else if (carbon >= 30000 && carbon < 60000) { // 41100g
     return 'a 100 mile journey in an average family car'
-  } else if (carbon < 164999999) {
+  } else if (carbon >= 60000 && carbon < 165000000) {
     return 'something'
-  } else if (carbon < 275000000) {
+  } else if (carbon >= 165000000 && carbon < 275000000) {
     return 'half the takeoff emissions of a Falcon 9 rocket'
+  } else if (carbon >= 275000000 && carbon < 999999999999) {
+    return 'big'
   } else {
     return 'something really big'
   }

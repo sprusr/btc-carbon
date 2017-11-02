@@ -3,11 +3,11 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: 'Avenir', 'Helvetica', sans-serif;
   color: #464646;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin: 15px auto;
   padding: 15px;
 }
 
@@ -15,7 +15,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: inherit;
 }
 
+hr {
+  border: none;
+  border-bottom: 1px dashed rgb(179, 179, 179);
+  margin: 30px 0;
+}
+
 .stats {
   font-style: italic;
+  font-weight: 500;
   color: #000;
 }

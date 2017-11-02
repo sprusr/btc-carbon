@@ -19,9 +19,22 @@
       <option value="week">week</option>
       <option value="day">day</option>
       <option value="hour">hour</option>
-    </select>, about the same as <span id="comparison" class="stats">...</span>.
+    </select><!--, about the same as <span id="comparison" class="stats">...</span>-->.
   </p>
-  <p><small>Created by hackers at HackUPC Fall 2017</small></p>
+  <hr>
+  <h2>Why is this happening?</h2>
+  <p>Bitcoin uses <em>hashing</em> to process transactions. This involves lots of computers competing to see who can "solve" a problem the fastest.</p>
+  <p>This competition is very intensive, and therefore usese a lot of energy.</p>
+  <h2>How accurate is this?</h2>
+  <p>In short: not very.</p>
+  <p>It's impossible to tell the exact hash rate of the network, we can only work out an estimate based on how long it took to process previous blocks <small>(from <a href="https://blockchain.info/api/">Blockchain API</a>)</small>.</p>
+  <p>On top of this, we don't know what computer hardware people are using to mine Bitcoin, and therefore how much energy is being consumed to do so. The above calculations are based on the Antminer S9.</p>
+  <p>It's also impossible to know how the energy consumed is being produced. If it was all being generated via solar, the carbon output would be zero (ignoring PV cell manufacturing/shipping). If it was generated from coal-fired power stations, the carbon output would be significantly worse. The above is based on the UK grid carbon intensity <small>(from <a href="https://api.carbonintensity.org.uk">Carbon Intensity API</a>)</small>.</p>
+  <h2>What can be done about it?</h2>
+  <p>We either stop using Bitcoin altogether (unlikely to happen), or we need to rethink how the network processes transations. The <a href="https://ethereum.org">Ethereum project</a> has been putting some serious thought into this recently, by working on a proposal to move to a "<a href="https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ">proof of stake</a>" method, which eliminates mining.</p>
+  <p>It's very complicated, and I don't understand it well enough to describe it.</p>
+  <hr>
+  <p><small>Created by hackers at <a href="https://hackupc.com">HackUPC Fall 2017</a>. Source on <a href="https://github.com/sprusr/btc-carbon">GitHub</a>.</small></p>
   <script src="script.js"></script>
 </body>
 </html>
