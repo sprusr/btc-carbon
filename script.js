@@ -5,6 +5,8 @@ var averageDeviceHashrate = 14000000000000, // H/s of Antminer S9
 function updateFigures() {
   var hashrateRequest = new Request('https://blockchain.info/q/hashrate?cors=true')
   var carbonIntensityRequest = new Request('https://api.carbonintensity.org.uk/intensity')
+  var btcperblockRequest = new Request('https://blockchain.info/q/bcperblock?cors=true')
+  var intervalRequest = new Request('https://blockchain.info/q/interval?cors=true')
 
   fetch(hashrateRequest)
     .then(function(response) {
@@ -26,6 +28,24 @@ function updateFigures() {
           document.getElementById('power').textContent = `${formatSI(totalPower)}W`
           document.getElementById('carbon').textContent = `${numberWithCommas(Math.round(btcCarbon / 1000000))} metric tonnes`
           //document.getElementById('comparison').textContent = `${getCarbonComparison(btcCarbon)}` // disabled until better facts are found!
+
+          fetch(btcperblockRequest)
+            .then(function(response) {
+              return response.text()
+            })
+            .then(function(btcperblock) {
+              fetch(intervalRequest)
+                .then(function(response) {
+                  return response.text()
+                })
+                .then(function(interval) {
+                  var carbonPerBlock = intensity / 1000 * totalPower * (interval / 3600)
+                      carbonPerCoin = carbonPerBlock / (btcperblock / 100000000)
+
+                      document.getElementById('carbon-per-block').textContent = `${numberWithCommas(Math.round(carbonPerBlock / 100000) / 10)} metric tonnes`
+                      document.getElementById('carbon-per-coin').textContent = `${numberWithCommas(Math.round(carbonPerCoin / 100000) / 10)} metric tonnes`
+                })
+            })
         })
     })
 }
@@ -55,7 +75,7 @@ function handlePeriodChange(e) {
 }
 
 // convert number to Kilo, Mega, Giga...
-function formatSI(a,b){if(0==a)return'0';var c=1024,d=b||2,e=['','K','M','G','T','P','E','Z','Y'],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+' '+e[f]}
+function formatSI(a,b){if(0==a)return'0';var c=1000,d=b||2,e=['','K','M','G','T','P','E','Z','Y'],f=Math.floor(Math.log(a)/Math.log(c));return parseFloat((a/Math.pow(c,f)).toFixed(d))+' '+e[f]}
 
 // add commas to a long number
 function numberWithCommas(x) {
