@@ -1,5 +1,7 @@
-var averageDeviceHashrate = 14000000000000, // H/s of Antminer S9
-    averageDevicePower = 1350, // W of Antminer S9
+var averageDeviceHashrate = 62000000000000, // H/s of Antminer S17 Pro
+    // averageDeviceHashrate = 14000000000000, // H/s of Antminer S9
+    averageDevicePower = 2790, // W of Antminer S17 Pro
+    // averageDevicePower = 1350, // W of Antminer S9
     selectedPeriodHours = 365.25 * 24
 
 function updateFigures() {

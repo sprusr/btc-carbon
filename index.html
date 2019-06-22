@@ -12,7 +12,7 @@
   <p>The current average hash rate of the Bitcoin network is <span id="hashrate" class="stats">...</span>.</p>
   <p>It's currently using about <span id="power" class="stats">...</span> of power (estimated).</p>
   <p>
-    This equates to roughly <span id="carbon" class="stats">...</span> of CO2 per
+    If this all happened in the UK, this would equate to roughly <span id="carbon" class="stats">...</span> of CO2 per
     <select id="timeframe">
       <option value="year">year</option>
       <option value="month">month</option>
@@ -26,19 +26,18 @@
   <p>Bitcoin uses <em>hashing</em> to process transactions. This involves lots of computers competing to see who can "solve" a problem the fastest.</p>
   <p>This competition is very intensive, and therefore uses a lot of energy, which to generate by traditional means emits a lot of CO2.</p>
   <h2>How accurate is this?</h2>
-  <p>In short: not very. <strong>For the most part, these are very rough estimates.</strong></p>
+  <p>In short: not very. <strong>These are very rough estimates.</strong></p>
   <p>It's impossible to tell the exact hash rate of the network, we can only work out an estimate based on how long it took to process previous blocks <small>(from <a href="https://blockchain.info/api/">Blockchain API</a>)</small>.</p>
-  <p>On top of this, we don't know what computer hardware people are using to mine Bitcoin, and therefore how much energy is being consumed to do so. The above calculations are based on the Antminer S9.</p>
+  <p>On top of this, we don't know what computer hardware people are using to mine Bitcoin, and therefore how much energy is being consumed to do so. The above calculations are based on the Antminer S17 Pro, which is modern and efficient. In reality, the hardware being used is probably less efficient.</p>
   <p>It's also impossible to know how the energy consumed is being produced. If it was all being generated via solar, the carbon output would be zero (ignoring PV cell manufacturing/shipping). If it was generated from coal-fired power stations, the carbon output would be significantly worse.</p>
-  <p>The above is based on the current UK grid carbon intensity <small>(from <a href="https://api.carbonintensity.org.uk">Carbon Intensity API</a>)</small>. This fluctuates quite a lot depending on time of day, and additionally is not representitive of most of the world, so please take it with a grain of salt. This is intended as a rough comparison, not as hard facts.</p>
+  <p>The above is based on the current UK grid carbon intensity <small>(from <a href="https://api.carbonintensity.org.uk">Carbon Intensity API</a>)</small>. This fluctuates quite a lot depending on time of day, and additionally is not representitive of most of the world.</p>
   <h2>What can be done about it?</h2>
-  <p>We either stop using Bitcoin altogether (unlikely to happen), or we need to rethink how the network processes transations. The <a href="https://ethereum.org">Ethereum project</a> has been putting some serious thought into this recently, by working on a proposal to move to a "<a href="https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ">proof of stake</a>" method, which eliminates mining.</p>
-  <p>It's very complicated, and I don't understand it well enough to describe it.</p>
+  <p>We either stop using Bitcoin altogether (unlikely to happen), or we need to rethink how the network processes transations. The <a href="https://ethereum.org">Ethereum project</a> is planning to switch to a "<a href="https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ">proof of stake</a>" algorithm at the beginning of 2020, with eliminates the concept of "mining".</p>
   <hr>
   <h2>Bonus stats</h2>
-  <p>The Bitcoin network emits ~<span id="carbon-per-block" class="stats">...</span> of CO2 per block, and ~<span id="carbon-per-coin" class="stats">...</span> per coin mined. <small>Thanks Elliot for <a href="https://twitter.com/elliotblackburn/status/926129290860744706">the idea</a>!</small></p>
+  <p>Based on above stats, the Bitcoin network emits ~<span id="carbon-per-block" class="stats">...</span> of CO2 per block, and ~<span id="carbon-per-coin" class="stats">...</span> per coin mined.</p>
   <hr>
-  <p><small>Created by hackers at <a href="https://hackupc.com">HackUPC Fall 2017</a>. Source on <a href="https://github.com/sprusr/btc-carbon">GitHub</a>.</small></p>
+  <p><small>Created by hackers at <a href="https://hackupc.com">HackUPC Fall 2017</a>. Updated in June 2019. Source on <a href="https://github.com/sprusr/btc-carbon">GitHub</a>.</small></p>
   <script src="script.js"></script>
 </body>
 </html>
